@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:14.1
+    ports:
+      - '8090:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: slash
+      POSTGRES_PASSWORD: "Dr9hGINBWvF1Tq6tdBe_X_HErUZ8F-WA"
+    volumes:
+      - slash_data:/var/lib/postgresql/data
+  redis:
+    image: redis:6.2.6
+    ports:
+      - '8091:6379'
+    command: redis-server --requirepass "dVKtxuAra4PEiY2DuFowETyH_VEY7ywY"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+volumes:
+  slash_data:
